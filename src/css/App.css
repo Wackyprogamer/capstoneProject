@@ -1,19 +1,12 @@
 /* login page */
 
-#LoginPage {
+#LoginPage, #SignupPage {
   background-color: #ECECEC;
 }
 
-#LoginHeader {
-  height: 75px;
-  width: 100%;
+#LoginHeader, #SignupHeader {
   background-color: #474787;
-  display: flex;
-  justify-content: center;
   box-shadow: 0 5px 20px gray;
-  position: absolute;
-  top: 0;
-
 }
 
 #LoginInfo {
@@ -22,6 +15,14 @@
   align-items: center;
   flex-direction: column;
   gap: 30px;
+}
+
+#SignupInfo {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+
 }
 
 h1 {
@@ -35,6 +36,11 @@ h1 {
   align-items: center;
   font-size: 20px;
   gap: 25px;
+}
+
+.Input {
+  display: flex;
+  flex-direction: column;
 }
 
 .LoginForm input,
@@ -66,17 +72,9 @@ hr {
   gap: 10px;
 }
 
-#loginFooter {
-  height: 25px;
-  width: 100%;
+#loginFooter, #SignupFooter {
   box-shadow: 0 -5px 20px gray;
   background-color: #2C2C54;
   color: #AAABB8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
   gap: 70px;
-
 }
