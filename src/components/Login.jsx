@@ -2,6 +2,7 @@ import Logo from "../images/Registration_App_Logo.png";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText("#474787"),
@@ -11,7 +12,19 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+
+
 function Login() {
+const [loggedIn, setLoggedIn] = useState(false)
+  //Sign the User in 
+  function SignIn(){
+    console.log(`signing in`)
+    fetch("http://localhost:8000/login")
+      .then((res) => res.json())
+      .then((data) => setLoggedIn(data.loggedIn));
+  }
+  console.log(loggedIn)
+
   return (
     <div
       id="LoginPage"
@@ -25,7 +38,7 @@ function Login() {
         <form class="LoginForm">
           <input placeholder="Email Address"></input>
           <input placeholder="Password"></input>
-          <ColorButton className="w-1/2" type="submit">
+          <ColorButton className="w-1/2" /* type="submit" */ onClick={SignIn}>
             LogIn
           </ColorButton>
         </form>
