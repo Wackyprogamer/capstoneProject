@@ -14,14 +14,30 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 function Login() {
 const [loggedIn, setLoggedIn] = useState(false)
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+
+const handleEmailChange = (e) => {
+  setEmail(e.target.value)
+}
+const handePasswordChange = (e) => {
+  setPassword(e.target.value)
+}
+
   //Sign the User in 
-  function SignIn(){
+  const signIn = async(email, password) => {
     console.log(`signing in`)
-    fetch("http://localhost:8000/login")
+    fetch("http://localhost:8000/login", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
       .then((res) => res.json())
       .then((data) => setLoggedIn(data.loggedIn));
+      console.log(loggedIn)
   }
-  console.log(loggedIn)
 
   return (
     <div
@@ -34,9 +50,17 @@ const [loggedIn, setLoggedIn] = useState(false)
       <div id="LoginInfo">
         <h1 className="">Welcome back!</h1>
         <form class="LoginForm">
-          <input placeholder="Email Address"></input>
-          <input type="password" placeholder="Password"></input>
-          <ColorButton className="w-1/2" /* type="submit" */ onClick={SignIn}>
+          <input
+            placeholder="Email Address"
+            onChange={handleEmailChange}
+            value={email}
+          />
+          <input
+            placeholder="Password"
+            onChange={handePasswordChange}
+            value={password}
+          />
+          <ColorButton className="w-1/2" onClick={() => signIn(email, password)}>
             LogIn
           </ColorButton>
         </form>

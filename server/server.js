@@ -5,7 +5,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/login", (req, res) => {
+app.post("/login", (req, res) => {
+  const { username, password } = req.body
+  console.log(req.body)
   res.json({ message: "login request", loggedIn: true });
 });
 
