@@ -12,8 +12,6 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-
-
 function Login() {
 const [loggedIn, setLoggedIn] = useState(false)
   //Sign the User in 
@@ -34,10 +32,10 @@ const [loggedIn, setLoggedIn] = useState(false)
         <img src={Logo} alt="logo" />
       </header>
       <div id="LoginInfo">
-        <h1>Welcome back!</h1>
+        <h1 className="">Welcome back!</h1>
         <form class="LoginForm">
           <input placeholder="Email Address"></input>
-          <input placeholder="Password"></input>
+          <input type="password" placeholder="Password"></input>
           <ColorButton className="w-1/2" /* type="submit" */ onClick={SignIn}>
             LogIn
           </ColorButton>
